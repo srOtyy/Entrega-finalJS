@@ -44,6 +44,12 @@ export class ProductoStorage{
         incrementarCantidad(){
             this.cantidad++;
         }
+        reducirCantidad(){
+            if(this.cantidad > 0){
+                this.cantidad--;
+            }
+            
+        }
 }
 export const Toast = Swal.mixin({
     toast: true,

@@ -74,6 +74,7 @@ function agregarAlCarrito(idProducto, carrito) {
     localStorage.setItem('carrito', JSON.stringify(carrito));
 
 }
+
 export async function JsonAGaleria(carrito,filtro){
     const lista =  await extraerDatosJSON();
     if(!filtro){
@@ -94,7 +95,7 @@ export async function cargarCarrito(carritoLocalStorage){
         })
         cargarProdBotonInfoCarrito(carrito)
     }catch(err){
-        console.log("error cargando el carrito.html")
+        console.log("error cargando el carrito.html" + err)
     }
     
 }
@@ -105,15 +106,15 @@ export function esconderCarrito(){
     postcarrito.classList.toggle("esconder");
 }
 function cargarProdBotonInfoCarrito(carrito){
+    // el carrito es una lista de ProductoCarrito
     cargarProductosCarrito(carrito);
-        cargarBotonesEliminar(carrito);
-        cargarInfoCarrito(carrito);
-        if( carrito.length < 1){
-            esconderCarrito();
-        }  
+    cargarBotonesEliminar(carrito);
+    cargarInfoCarrito(carrito);
+    if( carrito.length < 1){
+        esconderCarrito();
+    }  
 }
 function cargarProductosCarrito(lista){
-    //pasamos el localStorage a carritoRecuperado
     const carritoRecuperado = convertirAProductoCarrito(lista);
     const carrito = document.querySelector(".carrito_productos");
     carrito.innerHTML= '';
@@ -132,22 +133,28 @@ function cargarProductosCarrito(lista){
         carrito.appendChild(newProducto);
     })
 }
-function cargarBotonesEliminar(carrito){
+function cargarBotonesEliminar(){
     const botones = document.querySelectorAll(".boton-eliminar");
     botones.forEach(boton => {
         boton.addEventListener("click",()=> {
             const idSolicitado = parseInt(boton.getAttribute("data-index"));
-            const prodSolicitado = carrito.find(prod => prod.producto.id === idSolicitado);
-
-            if(prodSolicitado.cantidad > 1){
-                prodSolicitado.cantidad--;
-                cargarProdBotonInfoCarrito(carrito)
-            }else{
-                const nuevoCarrito = carrito.filter(prod => prod.producto.id != idSolicitado );
-                cargarProdBotonInfoCarrito(nuevoCarrito)
-            }       
+            editarCarritoStorage(idSolicitado)
         })
     })
+}
+function editarCarritoStorage(idProducto){
+    const carrito = JSON.parse(localStorage.getItem('carrito'));
+    const prodSolicitado = carrito.find(item => item.id === idProducto);
+    if(prodSolicitado.cantidad > 1){
+        prodSolicitado.cantidad--;
+        localStorage.setItem('carrito', JSON.stringify(carrito));
+        cargarCarrito(carrito);
+    }else{
+        const nuevoCarrito = carrito.filter(prod => prod.id != idProducto );
+        localStorage.setItem('carrito', JSON.stringify(nuevoCarrito));
+        cargarCarrito(nuevoCarrito);
+    }       
+
 }
 function cargarInfoCarrito(carrito){
     const divInfo = document.querySelector(".carrito_info");

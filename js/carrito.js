@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //cargamos el carrito y verificamos si existe algo dentro del carrito
     let carritoLocalStorage = JSON.parse(localStorage.getItem('carrito'))
+    console.log(carritoLocalStorage);
 
     if(carritoLocalStorage === null || carritoLocalStorage.length < 1){
         esconderCarrito();
