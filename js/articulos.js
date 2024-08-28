@@ -1,14 +1,16 @@
-import { convertirAProductoCarrito,JsonAGaleria } from "./funciones.js";
+import { convertirAproductoStorage,JsonAGaleria } from "./funciones.js";
 import { Toast } from "./bbdd.js";
 document.addEventListener('DOMContentLoaded', () => {
     
     //Creamos el array de carrito
-    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-    if(carrito.length > 0){
-        carrito = convertirAProductoCarrito(carrito);
+    let carrito = []
+    if(localStorage.getItem('carrito')){
+        carrito = JSON.parse(localStorage.getItem('carrito'));
+        carrito = convertirAproductoStorage(carrito);
+
     }
-    
     JsonAGaleria(carrito);
+
 
     const figures = document.querySelectorAll(".contenidoFigure");
     figures.forEach(figure =>{
@@ -17,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     } )
     
+
     const contenedorGaleria = document.querySelector(".galeria");
     contenedorGaleria.addEventListener("click",(e)=>{
         const boton = e.target;
@@ -27,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
               });
         }
     })
+
 
 })
 

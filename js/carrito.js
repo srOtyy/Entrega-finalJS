@@ -1,22 +1,22 @@
-import { cargarCarrito ,convertirAProductoCarrito,esconderCarrito,totalCarrito} from "./funciones.js";
+import { cargarCarrito,esconderCarrito} from "./funciones.js";
 document.addEventListener('DOMContentLoaded', () => {
 
     //cargamos el carrito y verificamos si existe algo dentro del carrito
-    let carrito = convertirAProductoCarrito(JSON.parse(localStorage.getItem('carrito')));
-    if(carrito === null || carrito.length < 1){
+    let carritoLocalStorage = JSON.parse(localStorage.getItem('carrito'))
+
+    if(carritoLocalStorage === null || carritoLocalStorage.length < 1){
         esconderCarrito();
     }else{
-        cargarCarrito(carrito);
+        cargarCarrito(carritoLocalStorage);
 
     }
 
     const botonCompra = document.getElementById("boton-confirmar-compra");
     botonCompra.addEventListener("click",()=>{
-        //cargamos los datos de nuevo en carrito x si sufre alguna modificacion antes de la compra( por la linea 22 )
-        carrito = convertirAProductoCarrito(JSON.parse(localStorage.getItem('carrito')));
+        const totalCarrito = localStorage.getItem('totalCarrito')
         Swal.fire({
             title: "Estas a punto de comprar",
-            text: `¿Deseas confirmar la compra por $${totalCarrito(carrito)}?`,
+            text: `¿Deseas confirmar la compra por $${totalCarrito}?`,
             icon: "warning",
             background: "#1a1a1a",
             color:"#AAFAAA",

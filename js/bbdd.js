@@ -3,9 +3,7 @@ export class ProductoCarrito{
         this.producto = producto;
         this.cantidad = cantidad;
     }
-    incrementarCantidad(){
-        this.cantidad++;
-    }
+    
     mostrarInfo(){
         return `
             <div class="nombre-producto">
@@ -35,7 +33,18 @@ export class ProductoCarrito{
     }
 
 }
-
+export class ProductoStorage{
+        constructor(id){
+            this.id = id;
+            this.cantidad = 1;
+        }
+        asignarCantidad(cantidad){
+            this.cantidad=cantidad;
+        }
+        incrementarCantidad(){
+            this.cantidad++;
+        }
+}
 export const Toast = Swal.mixin({
     toast: true,
     position: "top-end",

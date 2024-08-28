@@ -1,4 +1,4 @@
-import { ProductoCarrito } from "./bbdd.js";
+import { ProductoCarrito,ProductoStorage } from "./bbdd.js";
 
 function crearElemento(tag,html,clase){
     const newElement = document.createElement(tag);
@@ -7,9 +7,21 @@ function crearElemento(tag,html,clase){
 
     return newElement;
 }
-//Convierte un array a otro array de ProductosCarrito
-export function convertirAProductoCarrito(listaProductos) {
-    return listaProductos.map(prod => new ProductoCarrito(prod.producto, prod.cantidad));
+
+// Convierte un array a otro array de ProductosCarrito/ProductoStorage
+function convertirAProductoCarrito(lista) {
+    return lista.map(prod => new ProductoCarrito(prod.producto, prod.cantidad));
+}
+export function convertirAproductoStorage(lista){
+    const listaStorage = []
+    lista.forEach(prod => {
+        const productoStorageAux = new ProductoStorage(prod.id);
+        productoStorageAux.asignarCantidad(prod.cantidad);
+        listaStorage.push(productoStorageAux);
+    })
+    console.log(listaStorage)
+    return listaStorage;
+
 }
 
 //Extraer datos de bbdd.json 
@@ -23,7 +35,7 @@ async function  extraerDatosJSON(){
     }   
 }
 
-//Funciones de Galeria.html
+//Funciones de articulos.html
 function cargarGaleria(lista,carrito){
     const galeria = document.querySelector(".galeria");
     //limpiamos galeria 
@@ -40,23 +52,27 @@ function cargarGaleria(lista,carrito){
             "figureGalery");
         galeria.appendChild(newFigure);
 
-        //agregamos un evento a cada boton agregar del articulo
-        const agregarButton = newFigure.querySelector(".agregar");
-        agregarButton.addEventListener("click",()=>{
-            agregarAlCarrito(elemento,carrito);
-            //agregamos el carrito al localStorage
-            localStorage.setItem('carrito', JSON.stringify(carrito));
-        })
-
     })
+    agregarEventosBotonAgregar(carrito)
+
 }
-function agregarAlCarrito(producto, carrito) {
-    const productoExistente = carrito.find(item => item.producto.id === producto.id);
+function agregarEventosBotonAgregar(carrito){
+    const botones = document.querySelectorAll(".agregar");
+    botones.forEach(boton => {
+        boton.addEventListener("click",()=>{
+            agregarAlCarrito( parseInt(boton.getAttribute("data-id")) ,carrito)
+        })
+    })  
+}
+function agregarAlCarrito(idProducto, carrito) {
+    const productoExistente = carrito.find(item => item.id === idProducto);
     if (productoExistente) {
         productoExistente.incrementarCantidad();
     } else {
-        carrito.push(new ProductoCarrito(producto,1));
+        carrito.push(new ProductoStorage(idProducto));
     }
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+
 }
 export async function JsonAGaleria(carrito,filtro){
     const lista =  await extraerDatosJSON();
@@ -69,14 +85,32 @@ export async function JsonAGaleria(carrito,filtro){
 }
 
 //Funciones de Carrito.html
-export function cargarCarrito(carrito){
-    localStorage.setItem('carrito',JSON.stringify(carrito));
+export async function cargarCarrito(carritoLocalStorage){
+    try{
+        const bbdd = await extraerDatosJSON()
+        const carrito = []
+        carritoLocalStorage.forEach(producto => {
+            carrito.push(new ProductoCarrito(bbdd.find(bdProd => bdProd.id === producto.id ), producto.cantidad))
+        })
+        cargarProdBotonInfoCarrito(carrito)
+    }catch(err){
+        console.log("error cargando el carrito.html")
+    }
+    
+}
+export function esconderCarrito(){
+    const mensaje = document.querySelector(".mensaje-carrito");
+    const postcarrito = document.querySelector(".post-carrito");
+    mensaje.classList.toggle("esconder");
+    postcarrito.classList.toggle("esconder");
+}
+function cargarProdBotonInfoCarrito(carrito){
     cargarProductosCarrito(carrito);
-    cargarBotonesEliminar(carrito);
-    cargarInfoCarrito(carrito);
-    if(carrito.length < 1){
-        esconderCarrito();
-    }     
+        cargarBotonesEliminar(carrito);
+        cargarInfoCarrito(carrito);
+        if( carrito.length < 1){
+            esconderCarrito();
+        }  
 }
 function cargarProductosCarrito(lista){
     //pasamos el localStorage a carritoRecuperado
@@ -107,19 +141,13 @@ function cargarBotonesEliminar(carrito){
 
             if(prodSolicitado.cantidad > 1){
                 prodSolicitado.cantidad--;
-                cargarCarrito(carrito);
+                cargarProdBotonInfoCarrito(carrito)
             }else{
                 const nuevoCarrito = carrito.filter(prod => prod.producto.id != idSolicitado );
-                cargarCarrito(nuevoCarrito);   
+                cargarProdBotonInfoCarrito(nuevoCarrito)
             }       
         })
     })
-}
-export function esconderCarrito(){
-    const mensaje = document.querySelector(".mensaje-carrito");
-    const postcarrito = document.querySelector(".post-carrito");
-    mensaje.classList.toggle("esconder");
-    postcarrito.classList.toggle("esconder");
 }
 function cargarInfoCarrito(carrito){
     const divInfo = document.querySelector(".carrito_info");
@@ -132,6 +160,8 @@ function cargarInfoCarrito(carrito){
 function totalProdCarrito(carrito) {
     return carrito.reduce((total, producto) => total + producto.cantidad, 0);
 }
-export function totalCarrito(carrito) {
-    return carrito.reduce((total, producto) => total + producto.obtenerPrecioTotal(), 0);
+function totalCarrito(carrito) {
+    const total = carrito.reduce((total, producto) => total + producto.obtenerPrecioTotal(), 0);
+    localStorage.setItem('totalCarrito', total);
+    return total;
 }
