@@ -1,0 +1,47 @@
+@import "colores";
+.container-contacto{
+    font-family: Montserrat;
+
+    padding-top: 70px;
+    background-color: $color-terciario;
+    .formulario{
+        padding: 50px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        div{
+            display: flex;
+            flex-direction: column;
+            label{
+                color: $color-principal;
+                font-weight: 900;
+                letter-spacing: 2px;
+                padding: 2px 5px;
+            }
+            input,textarea{
+                font-size: 1.2em;
+                padding: 5px 8px;
+                width: 390px;
+                height: 40px;
+                border-radius: 10px;
+                border-color: transparent;
+            }
+            textarea{
+                height: 140px;
+            }
+        }
+        .submit{
+            background-color: $color-principal;
+            color: $color-blanco;
+            padding: 10px 40px;
+            border-radius: 5px;
+            transition: all 1s ease;
+            cursor: pointer;
+            &:hover{
+                background-color: $color-secundario;
+            }
+        }
+    }
+}

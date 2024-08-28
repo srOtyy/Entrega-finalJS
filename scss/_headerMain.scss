@@ -1,0 +1,114 @@
+.header{
+    font-family: Montserrat;
+    letter-spacing: 2px;
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    z-index: 500;
+    width: 100%;
+    height: 100px;
+    animation-name: transformHeader;
+    animation-timeline: scroll();
+    animation-timing-function: ease;
+    div{
+        font-size: 1.2em;
+        padding: 30px 0;
+        
+    }
+    .logo{
+        padding: 5px;
+        img{
+            cursor: pointer;
+            border-radius: 70px;
+            width: 100px;
+            opacity: .88;
+            box-shadow: 0 1px 1px rgba(227, 228 ,237, 0.37);
+            animation-name: transformLogo;
+            animation-timeline: scroll();
+            animation-timing-function: ease;
+            
+        }
+    }
+    .redes{
+        animation-name: transformHeaderDiv;
+        animation-timeline: scroll();
+        animation-timing-function: ease;
+        ul{
+            display: flex;
+            flex-direction: row;
+            gap: 25px;
+            li{
+                cursor: pointer;
+                list-style: none;
+            }
+        }
+    }
+    .workshop{
+        animation-name: transformHeaderDiv;
+        animation-timeline: scroll();
+        animation-timing-function: ease;
+    }
+}
+.div-main{
+    z-index: 20;
+    .background-header{
+        background-image: url(imagenes/fondoBici.jpg);
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        width: auto;
+        height: 700px;
+    }
+    .titulo{
+        position: absolute;
+        font-family: Montserrat;
+        color: $color-blanco;
+        padding-left:35px ;
+        top: 40%;
+        h1{
+            font-size: 3.6em;
+            letter-spacing: 3.5px;
+            padding: 0;
+
+        }
+        h2{
+            padding: 0;
+            font-size: 1.2em;
+            letter-spacing: 3px;
+            text-align: center;
+        }
+
+    }
+    
+}
+@keyframes transformHeader{
+    from{
+        height: 100px;
+    }
+    to{
+        height: 70px;
+        backdrop-filter: blur(30px);
+        box-shadow: 0 0 30px rgba(227, 228 ,237, 0.37);
+        border:2px solid rgba(255,255,255,0.18);
+    }
+}
+@keyframes transformHeaderDiv{
+    from{
+        padding: 30px 0;
+    }
+    to{
+        padding: 10px 0;
+        color: $color-blanco;
+    }
+}
+@keyframes transformLogo{
+    from{
+        box-shadow: 0 1px 1px rgba(227, 228 ,237, 0.37);
+        opacity: .8;
+    }
+    to{
+        box-shadow: 0 4px 8px rgba(227, 228 ,237, 0.37);
+        opacity: .97;
+    }
+}

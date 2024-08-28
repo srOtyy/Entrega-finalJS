@@ -1,0 +1,319 @@
+@import "colores";
+
+@mixin funcion($nombre){
+    animation-name:$nombre;
+    animation-timeline: scroll();
+    animation-timing-function: ease;
+    animation-fill-mode: both;
+    animation-range:100px 410px;
+}
+.headerNav{
+    position: fixed;
+    display: flex;
+    width: 100%;
+    flex-direction:row;
+    background-color: $color-principal;
+    justify-content: space-between;
+    height: 70px;
+    font-family: Montserrat;
+    z-index: 100;
+    padding: 2px 10px;
+    @include funcion(reducirHeader);
+
+    .divLogo{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        h3{
+            color: #1a1a1a;
+            letter-spacing: 2px;
+            padding: 20px;
+        }
+        img{
+            @include funcion(eliminarLogo);
+            padding: 5px;
+            width: 65px;
+            border-radius: 50px;
+        }
+    }
+    .navbar{
+        ul{
+            padding-top: 7px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            border-radius:10px ;
+            gap: 45px;
+            li{
+                cursor: pointer;
+                list-style: none;
+                div{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    a{
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        color: $color-oscuro-mate;
+                        text-decoration: none;
+                        border-radius: 100px;
+                        transition: all 1s ease;
+                        padding: 4px;
+                        @include funcion(reducirPadding);
+                        &:hover{
+                            background-color: $color-secundario;
+
+                        }
+                        label{
+                            font-size:.8em ;
+                            font-weight:900 ;
+                            opacity: 1;
+                            @include funcion(eliminarLabel);
+                      
+                        }
+                        img{
+                            width: 35px;
+                            @include funcion(reducirImg);
+                        }
+                    }
+                    
+                }
+            }
+        }
+        
+    }
+    h2{
+        padding-top: 15px;
+        text-align: center;
+        font-weight: 100;
+        font-size: 1.5em;
+        @include funcion(reducirh2);
+    }
+}
+.container-articulos{
+    padding-top: 70px;
+    font-family: Montserrat;
+    background-color: $color-terciario;
+    display: flex;
+    flex-direction: column;
+    .div-buscarArticulos{
+        background-color: $color-oscuro-mate;
+        padding: 50px 0 70px 0;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        position: sticky;
+        top: -355px;
+        z-index: 90;
+        @include funcion(bordearNav);
+        .barra-container{
+            padding: 10px 0;
+            margin: auto;
+            label{
+                font-family: Montserrat;
+                font-weight: 500;
+                padding: 5px;
+                color: $color-blanco;
+            }
+            .barra{
+                height: 35px;
+                width: 500px;
+                border-radius: 15px;
+                border-color: transparent;
+                padding: 5px 7px;
+            }
+        }
+        .seccion{
+            display: flex;
+            flex-direction: row;
+            
+            figure {
+                position: relative;
+                height: 210px;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                img {
+                    width: 100%;
+                    height: 210px;
+                    z-index: 50;
+                }
+                figcaption {
+                    position: absolute;
+                    top: 0;
+                    font-size: 1.9em;
+                    font-weight: bold;
+                    opacity: 0;
+                    transition: all 1s ease;
+                    z-index: 50;
+                    
+                    cursor: pointer;
+                    span{
+                        color: $color-blanco;
+                        text-decoration: none;
+                    }
+    
+                }
+                .capa{
+                    position: absolute;
+                    top: 0;
+                    background-color: $color-oscuro-mate;
+                    width: 100%;
+                    height: 210px;
+                    z-index: 90;
+                    opacity: .1;
+                    transition: all 1s ease;
+    
+                }
+                &:hover > .capa{
+                    opacity: .4;
+                }
+                &:hover > figcaption{
+                    top: 100px;
+                    color: $color-blanco;
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+    .div-contenidoArticulos{
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        h2{
+            color: $color-oscuro-mate;
+            font-size: 2.4em;
+            font-weight: 900;
+            padding: 25px;
+            margin: auto;
+        }
+        .galeria{
+            padding: 30px 20px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            figure{
+                background-color: $color-cuaternario;
+                padding-top: 10px;
+                display: flex;
+                flex-direction: column;
+                flex: 0 1 calc(30% - 10px);
+                align-items: center;
+                text-align: center;
+                justify-content: space-between;
+                border: 2px solid $color-secundario;
+                border-radius: 25px 25px 5px 5px;
+                height: 290px;
+                &:hover > img{
+                    transform: scale(1.3);
+                }
+          
+                img{
+                    transition: all 1.2s ease;
+                    max-width: 200px;
+                    max-height: 150px;
+                    object-fit: cover;
+                }
+                .info{
+                    background-color: $color-principal;
+                    color: $color-blanco;
+                    border-top-left-radius: 15px;
+                    border-top-right-radius: 15px;
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 6px;
+                    position: relative;
+                    p{
+                        font-weight: 900;
+                    }
+                    .agregar{
+                        background-color: $color-secundario;
+                        padding: 9px 7px;
+                        border-radius: 10px;
+                        color: $color-blanco;
+                        border-color:transparent ;
+                        width: 60%;
+                        margin-bottom: 10px;
+                        transition: all 1.5s ease;
+                        cursor: pointer;
+                        font-weight: 900;
+                        font-family: Montserrat;
+                        transition: background-color 0.1s, transform 0.1s;
+                        &:active{
+                            background-color:#84ad98;
+                            transform: scale(0.95);
+                        }
+                       
+                        
+                    }
+                    
+                }
+            }
+        }
+       
+    }
+}
+
+@keyframes reducirHeader{
+    from{
+        height: 70px;
+    }
+    to{
+        height: 50px;
+    }
+}
+@keyframes eliminarLabel{
+    from{
+        opacity: 1;
+        display: block;
+    }
+    to{
+        opacity: 0;
+        font-size: 1px;
+    }
+}
+@keyframes reducirImg{
+    from{
+        width: 35px;
+    }
+    to{
+        width: 29px;
+    }
+}
+@keyframes reducirh2{
+    from{
+        font-size: 1.5em;
+    }
+    to{
+        font-size: 1.1em;
+    }
+}
+@keyframes eliminarLogo{
+    from{
+        opacity: 1;
+    }
+    to{
+        opacity: 0;
+    }
+}
+@keyframes bordearNav{
+    from{
+        border-radius: 0;
+    }
+    to{
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+}

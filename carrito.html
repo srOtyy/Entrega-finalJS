@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <header class="headerNav">
+        <div    class="divLogo">
+            <a href="index.html"> <img src="css/imagenes/logo.jpeg"></a>  
+            <h3>BR-BKE</h3>
+        </div>
+        <nav    class="navbar">
+            <ul>
+                <li>
+                    <div>
+                        <a href="articulos.html">
+                            <img src="css/iconos/articulos.svg" alt="">
+                            <label>articulos</label>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <a href="carrito.html">
+                            <img src="css/iconos/carrito.svg" alt="">
+                            <label>carrito</label>
+                        </a>
+                        
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <a href="#">
+                            <img src="css/iconos/nosotros.svg" alt="">
+                            <label>nosotros</label>
+                        </a>
+                    </div>
+                </li>
+                <li>
+                    <div>
+                        <a href="contacto.html">
+                            <img src="css/iconos/contacto.svg" alt="">
+                            <label>contacto</label>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <h2>+workshop</h2>
+    </header>
+    <main>
+        <div    class="container-carrito">
+            <h2>Tu carrito</h2>
+            <div class="carrito">
+                <h3 class="mensaje-carrito esconder">Todavia no tenes productos 😥</h3>
+                
+                <!-- aca estan todos los productos del carrito (en carrito_productos xd) -->
+                <div class="carrito_productos">
+
+                </div>
+            </div>
+            <div    class="post-carrito">
+                <div class="carrito_info ">
+
+                </div>
+                <button id="boton-confirmar-compra">Confirmar compra</button>
+                
+            </div>
+        </div>
+        
+    </main>
+    <footer>
+        <div    class="div1">
+            <div class="logo">
+               <img src="css/imagenes/logo.jpeg" alt="">
+            </div>
+            <div class="ubicacion">
+                Estamos en <br>
+                La costa atlantica <br>
+                San Bernardo / Mar de Ajó /Pavon
+            </div>
+            <div class="info">
+                BR-BKE <br>
+                Distribuidor en Argentina <br>
+                +54911111117 <br>
+                info@br/bke.com.ar <br>
+                <a href=""  class="contacto">Contacto</a>
+
+            </div>
+        </div>
+        <div class="div2">
+            <div class="ayuda">
+                Defensa del consumidor. Para reclamos ingrese aquí
+            </div>
+            <div class="copyright">
+            © Copyright BR-BKE Argentina - 2024 <br> Desarrollado por Otyy
+            Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script     src="js/carrito.js" type="module"></script>
+</body>
+</html>

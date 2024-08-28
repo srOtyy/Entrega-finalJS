@@ -1,0 +1,205 @@
+{
+    "productos":[
+        {
+            "precio":5100,
+            "nombre":"XYZ-123",
+            "color":"rojo",
+            "seccion":"bicicletas",
+            "id":1,
+            "img":"css/imagenes/bicicletas/bici1.png"
+        },
+        {
+            "precio":3200,
+            "nombre":"Quantum",
+            "color":"Celeste",
+            "seccion":"bicicletas",
+            "id":2,
+            "img":"css/imagenes/bicicletas/bici2.png"
+        },
+        {
+            "precio":5300,
+            "nombre":"MTB-By",
+            "color":"Negro y blanco",
+            "seccion":"bicicletas",
+            "id":3,
+            "img":"css/imagenes/bicicletas/bici3.png"
+        },
+        {
+            "precio":4400,
+            "nombre":"Express",
+            "color":"Rosa",
+            "seccion":"bicicletas",
+            "id":4,
+            "img":"css/imagenes/bicicletas/bici4.png"
+        },
+        {
+            "precio":4500,
+            "nombre":"X-Terra",
+            "color":"Naranja",
+            "seccion":"bicicletas",
+            "id":5,
+            "img":"css/imagenes/bicicletas/bici5.png"
+        },
+        {
+            "precio":3900,
+            "nombre":"FX-8",
+            "color":"Negro",
+            "seccion":"bicicletas",
+            "id":6,
+            "img":"css/imagenes/bicicletas/bici6.png"
+        },
+        {
+            "precio":4700,
+            "nombre":"Tunmcz",
+            "color":"Rosa",
+            "seccion":"bicicletas",
+            "id":7,
+            "img":"css/imagenes/bicicletas/bici7.png"
+        },
+        {
+            "precio":4000,
+            "nombre":"LVMDM",
+            "color":"Blanco",
+            "seccion":"bicicletas",
+            "id":8,
+            "img":"css/imagenes/bicicletas/bici8.png"
+        },
+        {
+            "precio":4900,
+            "nombre":"Yoqo",
+            "color":"Celeste",
+            "seccion":"bicicletas",
+            "id":9,
+            "img":"css/imagenes/bicicletas/bici9.png"
+        },
+        {
+            "precio":2100,
+            "nombre":"Asiento A",
+            "color":"Amarillo y celeste",
+            "seccion":"accesorios",
+            "id":10,
+            "img":"css/imagenes/accesorios/acc1.png"
+        },
+        {
+            "precio":2000,
+            "nombre":"Asiento C",
+            "color":"Amarillo",
+            "seccion":"accesorios",
+            "id":11,
+            "img":"css/imagenes/accesorios/acc2.png"
+        },
+        {
+            "precio":1400,
+            "nombre":"Ahead D",
+            "color":"Naranja",
+            "seccion":"accesorios",
+            "id":12,
+            "img":"css/imagenes/accesorios/acc3.png"
+        },
+        {
+            "precio":1200,
+            "nombre":"Ahead D2",
+            "color":"Negro",
+            "seccion":"accesorios",
+            "id":13,
+            "img":"css/imagenes/accesorios/acc4.png"
+        },
+        {
+            "precio":1300,
+            "nombre":"Baliza ",
+            "color":"Negro",
+            "seccion":"accesorios",
+            "id":14,
+            "img":"css/imagenes/accesorios/acc5.png"
+        },
+        {
+            "precio":1300,
+            "nombre":"Baliza V2",
+            "color":"Negro",
+            "seccion":"accesorios",
+            "id":15,
+            "img":"css/imagenes/accesorios/acc6.png"
+        },
+        {
+            "precio":1100,
+            "nombre":"Farol ",
+            "color":"Negro",
+            "seccion":"accesorios",
+            "id":16,
+            "img":"css/imagenes/accesorios/acc7.png"
+        },
+        {
+            "precio":1200,
+            "nombre":"Herramientas ",
+            "color":"Negro",
+            "seccion":"accesorios",
+            "id":17,
+            "img":"css/imagenes/accesorios/acc8.png"
+        },
+        {
+            "precio":1000,
+            "nombre":"Puños ",
+            "color":"Celeste",
+            "seccion":"accesorios",
+            "id":18,
+            "img":"css/imagenes/accesorios/acc9.png"
+        },
+        {
+            "precio":2500,
+            "nombre":"Anorak K1",
+            "color":"Blanco",
+            "seccion":"indumentaria",
+            "id":19,
+            "img":"css/imagenes/indumentaria/ind1.png"
+        },
+        {
+            "precio":1800,
+            "nombre":"Calza V1",
+            "color":"Negro y blanco",
+            "seccion":"indumentaria",
+            "id":20,
+            "img":"css/imagenes/indumentaria/ind2.png"
+        },
+        {
+            "precio":2000,
+            "nombre":"Calza V3",
+            "color":"Rojo, negro y blanco",
+            "seccion":"indumentaria",
+            "id":21,
+            "img":"css/imagenes/indumentaria/ind3.png"
+        },
+        {
+            "precio":1500,
+            "nombre":"Guantes",
+            "color":"Negro",
+            "seccion":"indumentaria",
+            "id":22,
+            "img":"css/imagenes/indumentaria/ind4.png"
+        },
+        {
+            "precio":1400,
+            "nombre":"Lentes",
+            "color":"Azul",
+            "seccion":"indumentaria",
+            "id":24,
+            "img":"css/imagenes/indumentaria/ind6.png"
+        },
+        {
+            "precio":2400,
+            "nombre":"Calza MV2",
+            "color":"Blanco y rojo",
+            "seccion":"indumentaria",
+            "id":25,
+            "img":"css/imagenes/indumentaria/ind7.png"
+        },
+        {
+            "precio":2800,
+            "nombre":"Calza MV3",
+            "color":"Blanco y rojo",
+            "seccion":"indumentaria",
+            "id":26,
+            "img":"css/imagenes/indumentaria/ind8.png"
+        }   
+    ]
+        
+}
