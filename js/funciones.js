@@ -145,6 +145,7 @@ function cargarBotonesEliminar(){
 function editarCarritoStorage(idProducto){
     const carrito = JSON.parse(localStorage.getItem('carrito'));
     const prodSolicitado = carrito.find(item => item.id === idProducto);
+    
     if(prodSolicitado.cantidad > 1){
         prodSolicitado.cantidad--;
         localStorage.setItem('carrito', JSON.stringify(carrito));
